@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack - Client</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand">FitTrack</div>
+            <nav>
+                <button class="nav-btn active" data-view="today">Today's Plan</button>
+                <button class="nav-btn" data-view="log">Log Progress</button>
+                <button class="nav-btn" data-view="history">History</button>
+            </nav>
+            <div class="sidebar-footer">
+                <span id="userName"></span>
+                <button class="btn ghost small" id="logoutBtn" type="button">Logout</button>
+            </div>
+        </aside>
+
+        <main class="content">
+            <section class="view" id="view-today">
+                <h1 class="page-title">Today's Plan</h1>
+                <div id="todayContent"></div>
+            </section>
+
+            <section class="view hidden" id="view-log">
+                <h1 class="page-title">Log Progress</h1>
+                <div id="logEmpty"></div>
+                <form class="panel" id="logForm" novalidate>
+                    <p class="summary-line" id="logSummary"></p>
+                    <div class="field">
+                        <label for="logWeight">Today's weight (kg)</label>
+                        <input type="number" id="logWeight" min="20" max="500" step="0.1" placeholder="e.g. 70.5">
+                    </div>
+                    <div class="field">
+                        <label for="logNotes">Notes</label>
+                        <textarea id="logNotes" maxlength="500" placeholder="How did the session feel?"></textarea>
+                    </div>
+                    <p class="form-error" id="logError"></p>
+                    <button class="btn primary" type="submit" id="logSubmit">Submit progress</button>
+                </form>
+            </section>
+
+            <section class="view hidden" id="view-history">
+                <h1 class="page-title">History</h1>
+                <div class="history-top">
+                    <div class="panel ring-box">
+                        <div class="ring" id="ring"><span id="ringValue">0%</span></div>
+                        <strong>Weekly adherence</strong>
+                        <small class="muted" id="ringNote"></small>
+                    </div>
+                    <div class="panel">
+                        <h3>Weight</h3>
+                        <div class="chart-box" id="chartBox"><canvas id="weightChart"></canvas></div>
+                        <div id="chartEmpty"></div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <h3>Past logs</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Date</th><th>Completed</th><th>Weight</th><th>Notes</th></tr></thead>
+                            <tbody id="logTable"></tbody>
+                        </table>
+                    </div>
+                    <div id="historyEmpty"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/client.js"></script>
+</body>
+</html>

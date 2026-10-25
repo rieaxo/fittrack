@@ -1,0 +1,15 @@
+package com.fittrack.repository;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.fittrack.model.Plan;
+
+public interface PlanRepository extends MongoRepository<Plan, String> {
+
+    List<Plan> findByTrainerIdOrderByCreatedAtDesc(String trainerId);
+
+    Optional<Plan> findFirstByClientIdOrderByCreatedAtDesc(String clientId);
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack - Trainer</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand">FitTrack</div>
+            <nav>
+                <button class="nav-btn active" data-view="clients">My Clients</button>
+                <button class="nav-btn" data-view="create">Create Plan</button>
+                <button class="nav-btn" data-view="plans">My Plans</button>
+                <button class="nav-btn" data-view="progress">Client Progress</button>
+            </nav>
+            <div class="sidebar-footer">
+                <span id="userName"></span>
+                <button class="btn ghost small" id="logoutBtn" type="button">Logout</button>
+            </div>
+        </aside>
+
+        <main class="content">
+            <section class="view" id="view-clients">
+                <h1 class="page-title">My Clients</h1>
+                <div class="card-grid" id="clientList"></div>
+            </section>
+
+            <section class="view hidden" id="view-create">
+                <h1 class="page-title" id="createTitle">Create Plan</h1>
+                <form class="panel" id="planForm" novalidate>
+                    <div class="grid-2">
+                        <div class="field">
+                            <label for="planName">Plan name</label>
+                            <input type="text" id="planName" maxlength="60" placeholder="e.g. Strength Builder">
+                        </div>
+                        <div class="field">
+                            <label for="planDuration">Duration (weeks)</label>
+                            <input type="number" id="planDuration" min="1" max="52" value="4">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="planClient">Assign to client</label>
+                        <select id="planClient"></select>
+                    </div>
+
+                    <div class="row-head">
+                        <h3>Exercises</h3>
+                        <button class="btn small" type="button" id="addExercise">+ Add exercise</button>
+                    </div>
+                    <div id="exerciseRows"></div>
+
+                    <div class="row-head">
+                        <h3>Meals</h3>
+                        <button class="btn small" type="button" id="addMeal">+ Add meal</button>
+                    </div>
+                    <div id="mealRows"></div>
+
+                    <p class="form-error" id="planError"></p>
+                    <div class="actions">
+                        <button class="btn primary" type="submit" id="planSubmit">Save plan</button>
+                        <button class="btn ghost hidden" type="button" id="planCancel">Cancel edit</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="view hidden" id="view-plans">
+                <h1 class="page-title">My Plans</h1>
+                <div class="card-grid" id="planList"></div>
+            </section>
+
+            <section class="view hidden" id="view-progress">
+                <h1 class="page-title">Client Progress</h1>
+                <div class="panel">
+                    <div class="field">
+                        <label for="progressClient">Choose a client</label>
+                        <select id="progressClient"></select>
+                    </div>
+                </div>
+                <div id="progressBody" class="hidden">
+                    <div class="panel">
+                        <h3>Weekly adherence</h3>
+                        <div class="bar big"><div class="bar-fill" id="adherenceFill"></div></div>
+                        <p class="summary-line" id="adherenceText"></p>
+                    </div>
+                    <div class="panel">
+                        <h3>Weight</h3>
+                        <div class="chart-box" id="chartBox"><canvas id="weightChart"></canvas></div>
+                        <div id="chartEmpty"></div>
+                    </div>
+                    <div class="panel">
+                        <h3>Logs</h3>
+                        <div class="table-wrap">
+                            <table>
+                                <thead><tr><th>Date</th><th>Completed</th><th>Weight</th><th>Notes</th></tr></thead>
+                                <tbody id="logTable"></tbody>
+                            </table>
+                        </div>
+                        <div id="logEmpty"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/trainer.js"></script>
+</body>
+</html>

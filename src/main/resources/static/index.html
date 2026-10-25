@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack - Train smarter together</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="landing">
+        <section class="hero">
+            <div class="logo">FitTrack</div>
+            <h1>Workout plans that trainers build and clients actually follow.</h1>
+            <p>Trainers create workout and diet plans. Clients tick them off every day and watch their progress grow.</p>
+            <ul>
+                <li>Create plans with exercises and meals</li>
+                <li>Log weight and daily progress</li>
+                <li>See weekly adherence at a glance</li>
+            </ul>
+        </section>
+
+        <section class="auth-card">
+            <div class="tabs">
+                <button class="tab active" id="loginTab" type="button">Login</button>
+                <button class="tab" id="registerTab" type="button">Register</button>
+            </div>
+
+            <form id="loginForm" novalidate>
+                <div class="field">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email">
+                </div>
+                <div class="field">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Your password" autocomplete="current-password">
+                </div>
+                <p class="form-error" id="loginError"></p>
+                <button class="btn primary block" type="submit" id="loginSubmit">Login</button>
+            </form>
+
+            <form id="registerForm" class="hidden" novalidate>
+                <div class="field">
+                    <label for="regName">Full name</label>
+                    <input type="text" id="regName" placeholder="Your name" autocomplete="name">
+                </div>
+                <div class="field">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" placeholder="you@example.com" autocomplete="email">
+                </div>
+                <div class="field">
+                    <label for="regPassword">Password</label>
+                    <input type="password" id="regPassword" placeholder="At least 6 characters" autocomplete="new-password">
+                </div>
+                <div class="field">
+                    <label for="regRole">I am a</label>
+                    <select id="regRole">
+                        <option value="TRAINER">Trainer</option>
+                        <option value="CLIENT">Client</option>
+                    </select>
+                </div>
+                <div class="field hidden" id="trainerField">
+                    <label for="regTrainer">My trainer</label>
+                    <select id="regTrainer"></select>
+                </div>
+                <p class="form-error" id="registerError"></p>
+                <button class="btn primary block" type="submit" id="registerSubmit">Create account</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="js/common.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
